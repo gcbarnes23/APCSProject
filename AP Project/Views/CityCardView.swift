@@ -1,20 +1,23 @@
 import SwiftUI
 
 struct CityCard: View {
+    @State var city: City
+    
     var body: some View {
         VStack {
-            Text("Madrid")
+            Text(city.city)
                 .font(.title)
                 .fontWeight(.heavy)
                 .padding(.top)
                 .foregroundColor(Color("AccentColor"))
          
             AsyncImage(
-                url: URL(string: "https://www.travelandleisure.com/thmb/bm51vTBcyGJ840aDyLWaIOLqrgQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/madrid-spain-MADRIDTG0621-b2347a98186a4281a0874992b213ade0.jpg"),
+                url: URL(string: city.imageURL),
                 content: { image in
                     image
                         .resizable()
                         .frame(width: 300, height: 200)
+                        .cornerRadius(15)
                         .scaledToFill()
                 },
                 placeholder: {
@@ -22,13 +25,13 @@ struct CityCard: View {
                 }
             )
             
-            Text("Province: Madrid")
+            Text("Province: " + city.province)
                 .bodyText()
-            Text("Latitude: 40.4167")
+            Text("Latitude: " + String(city.latitude))
                 .bodyText()
-            Text("Urban Population: 6026000")
+            Text("Urban Population: " + String(city.populationUrban))
                 .bodyText()
-            Text("Madrid Proper Population: 3266126")
+            Text("Proper Population: " + String(city.populationProper))
                 .bodyText()
             
             Spacer()
@@ -38,8 +41,8 @@ struct CityCard: View {
     }
 }
 
-struct CityCard_Previews: PreviewProvider {
-    static var previews: some View {
-        CityCard()
-    }
-}
+//struct CityCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CityCard()
+//    }
+//}
