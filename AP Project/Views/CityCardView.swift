@@ -27,12 +27,20 @@ struct CityCard: View {
             
             Text("Province: " + city.province)
                 .bodyText()
+                .fontWeight(.heavy)
+                .padding(.top)
             Text("Latitude: " + String(city.latitude))
                 .bodyText()
-            Text("Urban Population: " + String(city.populationUrban))
-                .bodyText()
-            Text("Proper Population: " + String(city.populationProper))
-                .bodyText()
+            HStack {
+                Text("Urban\nPopulation:\n" + String(city.populationUrban))
+                    .bodyText()
+                    .multilineTextAlignment(.center)
+                    .padding(.trailing, 20)
+                Text("Proper\nPopulation:\n" + String(city.populationProper))
+                    .bodyText()
+                    .multilineTextAlignment(.center)
+                    .padding(.leading, 20)
+            }
             
             Spacer()
         }
